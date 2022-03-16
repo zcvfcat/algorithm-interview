@@ -13,3 +13,14 @@ class Solution:
             profit = max(profit, price - min_price)
 
         return profit
+
+
+def maxProfit(prices: List[int]) -> int:
+    p = 0
+    m_p = sys.maxsize
+
+    for price in prices:
+        m_p = min(m_p, p)
+        profit = max(p, p - m_p)
+
+    return p

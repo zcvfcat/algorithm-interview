@@ -37,11 +37,7 @@ def trap(height: List[int]) -> int:
                 break
 
             distance = i - stack[-1] - 1
-
             waters = min(height[i], height[stack[-1]]) - height[top]
-
             volume += distance * waters
-
         stack.append(i)
-
     return volume

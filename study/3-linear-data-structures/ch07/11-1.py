@@ -1,4 +1,5 @@
 from typing import List
+from itertools import product
 
 
 class Solution:
@@ -15,3 +16,23 @@ class Solution:
             out[i] = out[i] * p
             p = p * nums[i]
         return out
+
+
+def productExceptSelf(nums: List[int]) -> List[int]:
+    out = []
+
+    p = 1
+    for v in nums:
+        out.append(p)
+        p = p * v
+
+    p = 1
+
+    for i in range(len(nums) - 1, -1, -1):
+        out[i] = out[i] * p
+        p = p * nums[i]
+
+    return out
+
+
+print(productExceptSelf([1, 2, 3, 4]))
