@@ -1,3 +1,4 @@
+import enum
 from typing import List
 
 
@@ -15,26 +16,17 @@ class Solution:
         return answer
 
 
+# stack
+
 def dailyTemperatures(T: List[int]) -> List[int]:
     answer = [0] * len(T)
     stack = []
 
-    for i, cur in enumerate(T):
-        while stack and cur > T[stack[-1]]:
+    for index, value in enumerate(T):
+        while stack and value > T[stack[-1]]:
             last = stack.pop()
-            answer[last] = i - last
-
-        stack.append(i)
-        print(stack)
-
-        # answer = [0] * len(T)
-        # stack = []
-        # for i, cur in enumerate(T):
-        #     # 현재 온도가 스택 값보다 높다면 정답 처리
-        #     while stack and cur > T[stack[-1]]:
-        #         last = stack.pop()
-        #         answer[last] = i - last
-        #     stack.append(i)
+            answer[last] = index - last
+        stack.append(index)
 
     return answer
 
